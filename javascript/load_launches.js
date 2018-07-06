@@ -8,20 +8,15 @@ xmlhttp.onreadystatechange = function() {
             var patch = launch.links["mission_patch_small"];
             createBadgeDiv(launch, patch);
         });
+        if(!localStorage.getItem('all_launches')) {
+            localStorage.setItem('all_launches', JSON.stringify(all_launches));
+        } else {
+            console.log("Item exist.")
+        }
     }
 };
 xmlhttp.open("GET", url, true);
 xmlhttp.send();
-
-var badge_container = document.querySelector("#badge-container");
-badge_container.addEventListener("click", doSomething, false);
-
-function doSomething(e) {
-    if(e.target !== e.currentTarget) {
-        var clickedItem = e.target;
-        console.log(clickedItem.parentNode.dataset.flightNumber);
-    }
-}
 
 function createBadgeDiv(launch, patch_src) {
     var badge = document.createElement("div");
@@ -32,11 +27,8 @@ function createBadgeDiv(launch, patch_src) {
     
     badge.classList.add("badge");
     badge.dataset.flightNumber = launch.flight_number;
-    badge.appendChild(badge_image);
-    document.getElementById("badge-container").appendChild(badge);
-}
 
-function showDetails(animal) {
-    var animalType = animal.getAttribute("data-animal-type");
-    alert("The " + animal.innerHTML + " is a " + animalType + ".");
+    badge.appendChild(badge_image);
+
+    document.getElementById("badge-container").appendChild(badge);
 }
