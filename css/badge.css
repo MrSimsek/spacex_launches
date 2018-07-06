@@ -1,0 +1,16 @@
+.badge {
+    display: inline-block;
+    cursor: pointer;
+    margin: 2%;
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+.badge:hover {
+    opacity: 1;
+}
+
+.badge-img {
+    width: 100px;
+    height: 100px;
+}

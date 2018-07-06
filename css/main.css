@@ -1,0 +1,47 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.sub-title {
+    text-align: center;
+}
+
+#badge-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+.display-none {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+a:visited {
+    color: aqua;
+    text-decoration: none;
+}
+
+footer {
+    width: 100%;
+    background-color: rgb(43, 93, 185);
+    color: aliceblue;
+    text-align: center;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
