@@ -8,6 +8,7 @@ var modalBodyDetails = document.getElementById('modal-body-details');
 var modalLaunchSite = document.getElementById('launch-location');
 var reusable_components = document.getElementById('reusable-components');
 var launchVideo = document.getElementById('launch-video');
+var links = document.getElementById('links');
 
 var span = document.getElementsByClassName("close")[0];
 span.onclick = function() {
@@ -33,6 +34,7 @@ function setLaunchDetails(e) {
         var launch_video_link = launch.links.video_link;
         
         reusable_components.innerHTML = '';
+        links.innerHTML = '';
 
         Object.keys(launch.reuse).forEach(key => {
             var component = document.createElement('li');
@@ -41,11 +43,18 @@ function setLaunchDetails(e) {
             reusable_components.appendChild(component);
         });
 
+        Object.keys(launch.links).forEach(key => {
+            var link = document.createElement('li');
+            link.classList.add('link');
+            link.innerHTML = '<b>' + key + '</b>' + ' : ' + launch.links[key];
+            links.appendChild(link);
+        });
+
         modalHeaderTitle.innerHTML = launch_mission_name;
         modalHeaderDate.innerHTML = moment(launch_date).format('LL');
         modalBodyDetails.innerHTML = launch_details;
         modalLaunchSite.innerHTML = launch_site;
-        launchVideo.src = launch_video_link;
+        // launchVideo.src = launch_video_link;
 
         console.log(launch);
         modal.style.display = "block";

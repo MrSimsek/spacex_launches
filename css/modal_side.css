@@ -23,6 +23,7 @@
     background-color: #fefefe;
     height: 100%;
     width: 40%;
+    overflow: auto; /* Enable scroll if needed */
     -webkit-animation-name: slideIn;
     -webkit-animation-duration: 0.4s;
     animation-name: slideIn;
