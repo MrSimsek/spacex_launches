@@ -3,6 +3,8 @@ var badge_container = document.querySelector("#badge-container");
 
 var modal = document.getElementById('badge-details');
 var modalHeaderTitle = document.getElementById('modal-header-title');
+var modalHeaderDate = document.getElementById('modal-header-date');
+var modalBodyDetails = document.getElementById('modal-body-details');
 
 var span = document.getElementsByClassName("close")[0];
 span.onclick = function() {
@@ -20,7 +22,12 @@ function setLaunchDetails(e) {
     if(e.target !== e.currentTarget) {
         var clickedItem = e.target;
         var launch = launches.find(launch => launch.flight_number === parseInt(clickedItem.parentNode.dataset.flightNumber));
-        modal.style.display = "block";
         modalHeaderTitle.innerHTML = launch.mission_name;
+        var launch_date = launch.launch_date_utc;
+        modalHeaderDate.innerHTML = moment(launch_date).format('LL');
+        var launch_details = launch.details;
+        modalBodyDetails.innerHTML = launch_details;
+        console.log(launch);
+        modal.style.display = "block";
     }
 }
