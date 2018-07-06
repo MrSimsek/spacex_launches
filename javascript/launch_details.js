@@ -2,6 +2,7 @@ var launches = JSON.parse(localStorage.getItem('all_launches'));
 var badge_container = document.querySelector("#badge-container");
 
 var modal = document.getElementById('badge-details');
+var modalHeaderTitle = document.getElementById('modal-header-title');
 
 var span = document.getElementsByClassName("close")[0];
 span.onclick = function() {
@@ -20,5 +21,6 @@ function setLaunchDetails(e) {
         var clickedItem = e.target;
         var launch = launches.find(launch => launch.flight_number === parseInt(clickedItem.parentNode.dataset.flightNumber));
         modal.style.display = "block";
+        modalHeaderTitle.innerHTML = launch.mission_name;
     }
 }
