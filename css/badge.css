@@ -1,6 +1,5 @@
 .badge {
     display: inline-block;
-    cursor: pointer;
     margin: 2%;
     opacity: 0.5;
     transition: 0.5s;
@@ -11,6 +10,7 @@
 }
 
 .badge-img {
+    cursor: pointer;
     width: 100px;
     height: 100px;
 }
