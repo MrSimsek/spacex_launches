@@ -4,11 +4,13 @@ var badge_container = document.querySelector("#badge-container");
 var modal = document.getElementById('badge-details');
 var modalHeaderTitle = document.getElementById('modal-header-title');
 var modalHeaderDate = document.getElementById('modal-header-date');
-var modalBodyDetails = document.getElementById('modal-body-details');
-var modalLaunchSite = document.getElementById('launch-location');
+var launchDetails = document.getElementById('launch-details');
+var launchLocation = document.getElementById('launch-location');
 var reusable_components = document.getElementById('reusable-components');
-var launchVideo = document.getElementById('launch-video');
 var links = document.getElementById('links');
+
+var ul = document.createElement('ul');
+var li = document.createElement('li');
 
 var span = document.getElementsByClassName("close")[0];
 span.onclick = function() {
@@ -31,7 +33,6 @@ function setLaunchDetails(e) {
         var launch_date = launch.launch_date_utc;
         var launch_details = launch.details;
         var launch_site = launch.launch_site.site_name_long;
-        var launch_video_link = launch.links.video_link;
         
         reusable_components.innerHTML = '';
         links.innerHTML = '';
@@ -52,11 +53,10 @@ function setLaunchDetails(e) {
 
         modalHeaderTitle.innerHTML = launch_mission_name;
         modalHeaderDate.innerHTML = moment(launch_date).format('LL');
-        modalBodyDetails.innerHTML = launch_details;
-        modalLaunchSite.innerHTML = launch_site;
-        // launchVideo.src = launch_video_link;
+        launchDetails.innerHTML = launch_details;
+        launchLocation.innerHTML = launch_site;
 
-        console.log(launch);
+        console.log(launch.rocket);
         modal.style.display = "block";
     }
 }

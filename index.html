@@ -26,11 +26,69 @@
             <div class="modal-body">
                 <p>Launched from, <i><span id="launch-location"></span></i>.</p>
                 </iframe>
-                <h4>Details</h4>
-                <p id="modal-body-details">Some text in the Modal Body</p>
-                <h4>Reusability</h4>
+                <h3>Launch Details</h3>
+                <p id="launch-details">Some text in the Modal Body</p>
+                <h3>Reusability</h3>
                 <ul id="reusable-components"></ul>
-                <h4>Links</h4>
+                <h3>Rocket Details</h3>
+                <div id="rocket-details">
+                    <div id="rocket-info"></div>
+                    <div id="first-stage">
+                        <h4>First Stage</h4>
+                        <div id="cores">
+                            <h5>Core 1</h5>
+                            <ul id="core">
+                                <li id="block">1</li>
+                                <li id="core_serial">B0006</li>
+                                <li id="flight">1</li>
+                                <li id="landing_success">null</li>
+                                <li id="landing_type">null</li>
+                                <li id="landing_vehicle">null</li>
+                                <li id="reused">false</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="second-stage">
+                        <h4>Second Stage</h4>
+                        <div id="payloads">
+                            <h5>Payloads</h5>
+                            <ul id="payload">
+                                <li class="payload-info">cap_serial: C111</li>
+                                <li class="payload-info">cargo_manifest</li>
+                                <li class="payload-info">Customers
+                                    <ul>
+                                        <li class="customer">NASA (CRS)</li>
+                                        <li class="customer">aasdaasd</li>
+                                    </ul>
+                                </li>
+                                <li class="payload-info">.second_stage.payloads["0"].flight_time_sec</li>
+                                <li class="payload-info">.second_stage.payloads["0"].mass_returned_kg</li>
+                                <li class="payload-info">.second_stage.payloads["0"].mass_returned_lbs</li>
+                                <li class="payload-info">.second_stage.payloads["0"].orbit</li>
+                                <li class="payload-info">.second_stage.payloads["0"].orbit_params
+                                    <ul>
+                                        <li>.second_stage.payloads["0"].orbit_params.apoapsis_km</li>
+                                        <li>.second_stage.payloads["0"].orbit_params.eccentricity</li>
+                                        <li>.second_stage.payloads["0"].orbit_params.inclination_deg</li>
+                                        <li>.second_stage.payloads["0"].orbit_params.lifespan_years</li>
+                                        <li>.second_stage.payloads["0"].orbit_params.longitude</li>
+                                        <li>.second_stage.payloads["0"].orbit_params.periapsis_km</li>
+                                        <li>.second_stage.payloads["0"].orbit_params.period_min</li>
+                                        <li>.second_stage.payloads["0"].orbit_params.reference_system</li>
+                                        <li>.second_stage.payloads["0"].orbit_params.regime</li>
+                                        <li>.second_stage.payloads["0"].orbit_params.semi_major_axis_km</li>
+                                    </ul>
+                                </li>
+                                <li class="payload-info">.second_stage.payloads["0"].payload_id</li>
+                                <li class="payload-info">.second_stage.payloads["0"].payload_mass_kg</li>
+                                <li class="payload-info">.second_stage.payloads["0"].payload_mass_lbs</li>
+                                <li class="payload-info">.second_stage.payloads["0"].payload_type</li>
+                                <li class="payload-info">.second_stage.payloads["0"].reused</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <h3>Links</h3>
                 <ul id="links"></ul>
             </div>
             <div class="modal-footer">
