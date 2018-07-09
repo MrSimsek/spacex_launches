@@ -1,22 +1,26 @@
 var xmlhttp = new XMLHttpRequest();
 var url = "https://api.spacexdata.com/v2/launches";
 
-xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var all_launches = JSON.parse(this.responseText);
-        all_launches.forEach(launch => {
-            var patch = launch.links["mission_patch_small"];
-            createBadgeDiv(launch, patch);
-        });
-        if(!localStorage.getItem('all_launches')) {
+if(!localStorage.getItem('all_launches')) {
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var all_launches = JSON.parse(this.responseText);
+            all_launches.forEach(launch => {
+                var patch = launch.links["mission_patch_small"];
+                createBadgeDiv(launch, patch);
+            });
             localStorage.setItem('all_launches', JSON.stringify(all_launches));
-        } else {
-            console.log("Item exist.")
         }
-    }
-};
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+} else {
+    var all_launches = JSON.parse(localStorage.getItem('all_launches'));
+    all_launches.forEach(launch => {
+        var patch = launch.links["mission_patch_small"];
+        createBadgeDiv(launch, patch);
+    });
+}
 
 function createBadgeDiv(launch, patch_src) {
     var badge = document.createElement("div");

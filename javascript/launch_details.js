@@ -9,8 +9,7 @@ var launchLocation = document.getElementById('launch-location');
 var reusable_components = document.getElementById('reusable-components');
 var links = document.getElementById('links');
 
-var ul = document.createElement('ul');
-var li = document.createElement('li');
+var rocketDetails = document.getElementById('rocket-details');
 
 var span = document.getElementsByClassName("close")[0];
 span.onclick = function() {
@@ -36,6 +35,7 @@ function setLaunchDetails(e) {
         
         reusable_components.innerHTML = '';
         links.innerHTML = '';
+        rocketDetails.innerHTML = '';
 
         Object.keys(launch.reuse).forEach(key => {
             var component = document.createElement('li');
@@ -56,7 +56,34 @@ function setLaunchDetails(e) {
         launchDetails.innerHTML = launch_details;
         launchLocation.innerHTML = launch_site;
 
-        console.log(launch.rocket);
+        rocketDetails.appendChild(renderList(launch.rocket));
         modal.style.display = "block";
     }
+}
+
+function renderList(obj) {
+//  cosmetic utility function for capitalizing text
+    function capitalize(str) {
+        return str[0].toUpperCase() + str.slice(1);
+    }
+//  for every level of our JSON object, we create a ul element
+    var result = document.createElement('ul');
+//  for every key in the object
+    for (key in obj) {
+    //  create a li element and create/add a capitalized copy of the key
+        var list = document.createElement('li')
+        var textnode = document.createTextNode(capitalize(key));
+        list.appendChild(textnode);
+    //  if there's another level to the object, recursively call our function
+    //  this will create a new ul which we'll add after our text
+        if (typeof obj[key] === 'object') {
+            list.appendChild(renderList(obj[key]));
+        } else {
+    //  otherwise it must be a price. add ': ' and the value to the text
+            textnode.textContent += ': ' + obj[key];
+        }
+    //  add our completed li to the ul
+        result.appendChild(list); 
+    }
+    return result;
 }
