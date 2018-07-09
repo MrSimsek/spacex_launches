@@ -30,6 +30,12 @@
     animation-duration: 0.4s
 }
 
+@media only screen and (max-width: 600px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+
 /* The Close Button */
 .close {
     color: white;
