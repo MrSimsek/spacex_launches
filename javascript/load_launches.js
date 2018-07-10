@@ -1,19 +1,21 @@
-var xmlhttp = new XMLHttpRequest();
+var xhr = new XMLHttpRequest();
+var method = "GET";
 var url = "https://api.spacexdata.com/v2/launches";
 
 if(!localStorage.getItem('all_launches')) {
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
+    xhr.open(method, url, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
             var all_launches = JSON.parse(this.responseText);
             all_launches.forEach(launch => {
                 var patch = launch.links["mission_patch_small"];
                 createBadgeDiv(launch, patch);
             });
             localStorage.setItem('all_launches', JSON.stringify(all_launches));
+            location.reload();
         }
     };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
+    xhr.send();
 } else {
     var all_launches = JSON.parse(localStorage.getItem('all_launches'));
     all_launches.forEach(launch => {
